@@ -146,13 +146,13 @@ export default function Structure({ lang }: { lang: Locale }) {
             </div>
 
             <div className="mt-auto flex flex-col gap-2 pt-8 sm:flex-row">
-              <BookButton prefill={{ department: dept.id }} className="h-12 flex-1 rounded-full bg-brand px-6 font-semibold text-white transition-colors hover:bg-brand-dark">
+              <BookButton prefill={{ department: dept.id }} className="h-12 w-full rounded-full bg-brand px-6 sm:flex-1 font-semibold text-white transition-colors hover:bg-brand-dark">
                 {ui.book}
               </BookButton>
               <button
                 type="button"
                 onClick={() => showDoctorsOf(dept.id)}
-                className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-line px-6 font-semibold transition-colors hover:bg-bg"
+                className="inline-flex h-12 w-full items-center sm:flex-1 justify-center gap-2 rounded-full border border-line px-6 font-semibold transition-colors hover:bg-bg"
               >
                 {t.showDoctors}
                 <ArrowRight className="h-4 w-4" />

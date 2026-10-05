@@ -52,20 +52,22 @@ export default function Prices({ lang }: { lang: Locale }) {
               <tr>
                 <th scope="col" className="px-5 py-3 font-bold">{t.service}</th>
                 <th scope="col" className="px-5 py-3 text-right font-bold">{t.price}</th>
-                <th scope="col" className="w-0 px-3 py-3"><span className="sr-only">{ui.book}</span></th>
+                <th scope="col" className="hidden w-0 px-3 py-3 sm:table-cell"><span className="sr-only">{ui.book}</span></th>
               </tr>
             </thead>
             <tbody>
               {(collapsed ? rows.slice(0, 10) : rows).map((p) => (
                 <tr key={p.name.ru} className="border-t border-line transition-colors hover:bg-brand-soft/50">
                   <td className="px-5 py-3.5">
-                    <span className="font-medium">{tr(p.name, lang)}</span>
+                    <BookButton prefill={{ department: p.department }} className="text-left font-medium transition-colors hover:text-brand-dark">
+                      {tr(p.name, lang)}
+                    </BookButton>
                     <span className="block text-xs text-subtle">{tr(departments.find((d) => d.id === p.department)!.name, lang)}</span>
                   </td>
                   <td className="px-5 py-3.5 text-right font-bold whitespace-nowrap">
                     {sum(p.price)} <span className="font-normal text-subtle">{t.currency}</span>
                   </td>
-                  <td className="px-3 py-3.5">
+                  <td className="hidden px-3 py-3.5 sm:table-cell">
                     <BookButton prefill={{ department: p.department }} className="rounded-full bg-brand-soft px-3 py-1.5 text-xs font-bold whitespace-nowrap text-brand-dark transition-colors hover:bg-brand hover:text-white">
                       {ui.bookShort}
                     </BookButton>
