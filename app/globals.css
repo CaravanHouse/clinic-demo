@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* Mehr Medical (демо): светлая медицинская тема — изумрудный на тёплом белом */
+@theme {
+  --color-bg: #f5f7f3;
+  --color-surface: #ffffff;
+  --color-ink: #12201a;
+  --color-muted: #59665f;
+  --color-subtle: #87918b;
+  --color-line: #e2e8e3;
+  --color-brand: #0e9f6e;
+  --color-brand-dark: #0a6e4d;
+  --color-brand-soft: #e6f6ee;
+  --color-coral: #f2705e;
+  --color-sun: #f5b841;
+
+  --font-sans: var(--font-onest), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+  ::selection {
+    background-color: rgb(14 159 110 / 0.2);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@utility panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1.5rem;
+  box-shadow: 0 1px 2px rgb(18 32 26 / 0.04), 0 8px 24px -12px rgb(18 32 26 / 0.08);
+}
+
+/* Мягкий узор из крестиков на фоне первого экрана */
+@utility bg-cross {
+  background-image: radial-gradient(circle at 1px 1px, rgb(14 159 110 / 0.16) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility input {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 0.9rem;
+  background-color: var(--color-surface);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  &:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 4px rgb(14 159 110 / 0.15);
+  }
+}
