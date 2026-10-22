@@ -17,7 +17,7 @@ const centerColor = {
 } as const;
 
 /** Показать врачей отделения в блоке «Врачи» (Doctors слушает это событие) */
-export const showDoctorsOf = (department: DepartmentId) => {
+const showDoctorsOf = (department: DepartmentId) => {
   window.dispatchEvent(new CustomEvent("clinic:doctors", { detail: department }));
   document.getElementById("doctors")?.scrollIntoView();
 };
